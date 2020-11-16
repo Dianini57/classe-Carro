@@ -1,0 +1,78 @@
+ */
+package exercíciodia16;
+
+/**
+ *
+ * @author diani
+ */
+public class Exercíciodia16 {
+    static Carro vetCarro[] = new Carro[10];
+    static int fim = -1;
+
+
+    public static void insere(Carro c){
+        //inserir no vetor
+        if (fim == -1 || fim < (vetCarro.length-1)){
+            //vetor vazio
+            fim++;
+            vetCarro[fim] = c;
+        }
+        
+    }
+    public static void imprimeVet(){
+        System.out.println("----IMPRIME VETOR----");
+        for (int i = 0; i <=fim; i++){
+            System.out.println("Imprime: " +i+ "Carros:" + vetCarro[i].toString());
+        }
+    }
+    
+    public static int busca (String Modelo){
+        for(int i = 0; i <= fim; i++){
+            if (!vetCarro[i].Modelo.contains(Modelo)){
+            } else {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public static Carro remove(String m){
+        int y = busca(m);
+        Carro aux = vetCarro[y];
+        for(int i = y; i <fim ; i ++){
+            vetCarro[i] = vetCarro[i+1];
+        }
+        vetCarro[fim] = null;
+        fim --;
+        return aux;
+        
+    }
+               
+    public static void main(String[] args){
+        
+        Carro c1 = new Carro("Dianini", 26);
+        Carro c2 = new Carro("Feh", 22);
+        Carro c3 = new Carro("Ana", 19);
+        
+        insere(c1);
+        imprimeVet();
+        
+        insere(c2);
+        insere(c3);
+        imprimeVet();
+        
+        
+        Carro rm = remove("Dia");
+        System.out.println(rm.toString());
+        imprimeVet();
+        
+        Carro rm2 = remove("Feh");
+        System.out.println(rm2.toString());
+        imprimeVet();
+        
+        
+        
+    }
+}
+    
+
